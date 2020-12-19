@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        "use strict";
+
+        function xPyramid( rows ) {
+            for ( var i = 1; i <= rows; i++ ) {
+                var arr = [];
+                for ( var j = 1; j <= i; j++ ) {
+                    arr.push( 'x' );
+                }
+                console.log( arr.join( " " ) + "\n" );
+            }
+        }
+        xPyramid( 20 );
+    </script>
+</body>
+
+</html>

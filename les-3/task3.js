@@ -1,3 +1,5 @@
+"use strict";
+
 /* Перед вами находится массив с продуктами, 
 сегодня распродажа и вам нужно на каждый товар применить скидку 15% */
 
@@ -16,6 +18,10 @@ const products = [
     },
 ];
 
+/* Моё решение отличается от вашего, долго не мог решить,
+но мне было принципиально решить самому. Получилось
+чуть дольше, но я с помощью forEach не понял, как делать */
+
 const productsWithDiscount = products.map( item => {
     item = Object.assign( {}, item, { new_price: null } );
     let discount = 15;
@@ -26,3 +32,9 @@ const productsWithDiscount = products.map( item => {
 
 console.log( productsWithDiscount );
 
+//решение из папки решений (проще и короче получается)
+products.forEach( item => {
+    let discount = 0.15;
+    item.new_price = item.price - item.price * discount;
+} );
+console.log( products );
