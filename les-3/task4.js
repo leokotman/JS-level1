@@ -33,17 +33,17 @@ const products = [
 /* над методом filter бился долго, не догадался, что можно применить in 
 для поиска свойства в объекте, сделал эту часть по примеру из решения
  */
-const productsWithPhotos = products.filter( product => "photos" in product && product.photos.length > 0 );
-console.log( productsWithPhotos );
+const productsWithPhotos = products.filter(product => "photos" in product && product.photos.length > 0);
+console.log(productsWithPhotos);
 
 //сортировка от низкой к высокой цене (наоборот - поменять 1 / -1)
-products.sort( function ( a, b ) {
-    if ( a.price > b.price ) {
+products.sort(function (a, b) {
+    if (a.price > b.price) {
         return 1;
     }
-    if ( a.price < b.price ) {
+    if (a.price < b.price) {
         return -1;
     }
     return 0;
-} );
-console.log( products );
+});
+console.log(products);
