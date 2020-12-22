@@ -11,15 +11,13 @@
 function Product(name, price) {
     this.name = name;
     this.price = price;
-    //получилось только так, если убрать это свойство с функцией,
-    // то у меня не работала функция
-    this.sale_price = make25PercentDiscount(price);
 }
+
 //если не создавать метод внутри конструктора и не внутри прототипа,
 // но только снаружи отдельной функцией получается? это же нарушение инкапсуляции?
-function make25PercentDiscount(price) {
+function make25PercentDiscount(item) {
     let discount = 0.25;
-    return price = price - price * discount;
+    return item.price = item.price - item.price * discount;
 }
 
 const product1 = new Product("Чистый код", 600);
@@ -28,12 +26,27 @@ const product2 = new Product("Изучаем программирование н
 console.log(product1);
 console.log(product2);
 
-/* если убрать свойство с функцией из конструктора,
-то у меня было так в конце:
-make25PercentDiscount(product1.price);
-make25PercentDiscount(product2.price);
+make25PercentDiscount(product1);
+make25PercentDiscount(product2);
 console.log(product1);
 console.log(product2);
 
-в итоге возвращались одинаковые объекты без применения скидки
-*/
+//ES6
+class ProductSimple {
+    constructor(name, price) {
+        this.name = name;
+        this.price = price;
+    }
+    make25PercentDiscountSimple() {
+        let discount = 0.25;
+        return this.price = this.price - this.price * discount;
+    }
+}
+const product3 = new ProductSimple("JavaScript для детей", 400);
+const product4 = new ProductSimple("Python для детей", 1000);
+console.log(product3);
+console.log(product4);
+product3.make25PercentDiscountSimple();
+product4.make25PercentDiscountSimple();
+console.log(product3);
+console.log(product4);
