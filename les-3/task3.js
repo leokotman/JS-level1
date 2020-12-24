@@ -22,19 +22,19 @@ const products = [
 но мне было принципиально решить самому. Получилось
 чуть дольше, но я с помощью forEach не понял, как делать */
 
-const productsWithDiscount = products.map( item => {
-    item = Object.assign( {}, item, { new_price: null } );
+const productsWithDiscount = products.map(item => {
+    item = Object.assign({}, item, { new_price: null });
     let discount = 15;
 
-    item.new_price = item.price - item.price * ( discount / 100 );
+    item.new_price = item.price - item.price * (discount / 100);
     return item;
-} );
+});
 
-console.log( productsWithDiscount );
+console.log(productsWithDiscount);
 
 //решение из папки решений (проще и короче получается)
-products.forEach( item => {
+products.forEach(item => {
     let discount = 0.15;
     item.new_price = item.price - item.price * discount;
-} );
-console.log( products );
+});
+console.log(products);
