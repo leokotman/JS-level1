@@ -21,6 +21,7 @@ let renderer = {
         }
         console.log(this.map);
     },
+
     clear() {
         //чистим консоль
         console.clear();
@@ -28,4 +29,4 @@ let renderer = {
         this.map = '';
 
     }
-}
+};

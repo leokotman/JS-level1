@@ -12,21 +12,23 @@ function Post(author, text, date) {
     this.author = author;
     this.text = text;
     this.date = date;
-}
+};
+
 Post.prototype.edit = function () {
     this.text = prompt("Напишите новый текст поста");
-}
+};
+
 function AttachedPost(author, text, date) {
     Post.call(this, author, text, date);
     this.highlighted = false;
-}
+};
 
 //пустой объект-прослойка для отсоединения от родителя
 AttachedPost.prototype = Object.create(Post.prototype);
 AttachedPost.prototype.constructor = AttachedPost;
 AttachedPost.prototype.makeTextHighlighted = function () {
     this.highlighted = true;
-}
+};
 
 const post1 = new Post("Leo", "hello world", "22.12.2020");
 const post2 = new AttachedPost("Leo", "main attached text", "20.12.2020");
@@ -48,19 +50,23 @@ class PostSimple {
         this.text = text;
         this.date = date;
     }
+
     edit_simple() {
         this.text = prompt("Напишите новый текст поста (классы)");
     }
-}
+};
+
 class AttachedPostSimple extends PostSimple {
     constructor(author, text, date) {
         super(author, text, date);
         this.highlighted = false;
     }
+
     makeTextHighlighted_simple() {
         this.highlighted = true;
     }
-}
+};
+
 const post3 = new PostSimple("Leo K", "new simple text", "22.12.2020");
 const post4 = new AttachedPostSimple("Leo K", "new attach post simple", "22.12.2020");
 console.log(post3);

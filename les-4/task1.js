@@ -24,7 +24,7 @@ function NumberToObject(number) {
     } else {
         console.log("Вы ввели что-то не то, введите целое число от 0 до 999. " + {});
     }
-}
+};
 
 const number = new NumberToObject(userNumber);
 console.log(number);

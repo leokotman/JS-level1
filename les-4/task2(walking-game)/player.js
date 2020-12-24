@@ -8,6 +8,7 @@
 const player = {
     x: 0,
     y: 0,
+
     /**
      * Двигает игрока в переданном направлении
      * @param {{x: int, y: int}} nextPoint - Следующая точка пользователя
@@ -20,4 +21,4 @@ const player = {
             this.y = nextPoint.y;
         }
     }
-}
+};

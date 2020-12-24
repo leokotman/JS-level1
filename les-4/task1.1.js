@@ -37,6 +37,7 @@ class ProductSimple {
         this.name = name;
         this.price = price;
     }
+
     make25PercentDiscountSimple() {
         let discount = 0.25;
         return this.price = this.price - this.price * discount;

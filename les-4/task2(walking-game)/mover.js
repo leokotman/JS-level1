@@ -19,6 +19,7 @@ let mover = {
             return direction;
         }
     },
+
     /**
      * Отдаёт следующую точку расположения игрока
      * @param {int} direction Направление движения игрока
@@ -73,5 +74,4 @@ let mover = {
         }
         return nextPosition;
     }
-
-}
+};

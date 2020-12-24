@@ -8,4 +8,4 @@
 const config = {
     rowsNumber: 10,
     colsNumber: 10
-}
+};
