@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <div class="one two three"></div>
 
@@ -16,7 +18,14 @@
      -->
 
     <script>
-        
+        const div = document.querySelector('div');
+        let classes = div.classList;
+
+        classes.forEach(Class => {
+            console.log(Class);
+            //про зарезервированные слова забыл и промучился, пока не дошло, в чем проблема
+        });
     </script>
 </body>
+
 </html>
