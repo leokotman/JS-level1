@@ -14,6 +14,7 @@
         <input type="text"><br>
         <input type="text"><br>
     </form>
+    <button>Добавить отступы</button>
 
     <!-- 
         Задание. Сделайте, чтобы у всех инпутов снизу был внешний отступ (margin-bottom).
@@ -25,7 +26,18 @@
     -->
 
     <script>
-        
+        "use strict";
+
+        let inputs = document.querySelectorAll('input');
+        let button = document.querySelector('button');
+
+        //отступы по кнопке
+        button.addEventListener('click', function click(event) {
+            inputs.forEach(input => {
+                input.style.marginBottom = '20px';
+            });
+            button.removeEventListener('click', click);
+        });
     </script>
 </body>
 
