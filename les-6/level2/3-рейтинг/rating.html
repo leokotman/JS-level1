@@ -34,79 +34,34 @@
     -->
 
     <script>
-        let firstStar = document.getElementById('first');
-        let secondStar = document.getElementById('second');
-        let thirdStar = document.getElementById('third');
-        let fourthStar = document.getElementById('fourth');
-        let fifthStar = document.getElementById('fifth');
+        "use strict";
 
-        let goldenClass = 'golden';
+        let iElems = document.querySelectorAll('i');
 
-        //вынес функции отдельно, чтобы не дублировать код
-        function mouseover(star) {
-            if (!star.classList.contains('goldenClass')) {
-                star.classList.add(goldenClass);
+        iElems.forEach(function(i) {
+            i.addEventListener('mouseover', function(event) {
+                addGoldenClass(event.target);
+            });
+            i.addEventListener('mouseout', function(event) {
+                removeGoldenClass(event.target);
+            });
+        });
+
+        function addGoldenClass(i) {
+            i.classList.add('golden');
+            let previousElem = i.previousElementSibling;
+            if (previousElem !== null && previousElem.tagName === 'I') {
+                return addGoldenClass(previousElem);
             }
         }
 
-        function mouseout(star) {
-            star.classList.remove(goldenClass);
+        function removeGoldenClass(i) {
+            i.classList.remove('golden');
+            let previousElem = i.previousElementSibling;
+            if (previousElem !== null && previousElem.tagName === 'I') {
+                return removeGoldenClass(previousElem);
+            }
         }
-
-
-        //в итоге все равно без дублирования в здездах не знаю как еще сделать
-        //работает, но громоздко выглядит каждую звезду в каждой звезде писать
-        firstStar.addEventListener('mouseover', function() {
-            mouseover(firstStar);
-        });
-
-        secondStar.addEventListener('mouseover', function() {
-            mouseover(firstStar);
-            mouseover(secondStar);
-        });
-
-        thirdStar.addEventListener('mouseover', function() {
-            mouseover(firstStar);
-            mouseover(secondStar);
-            mouseover(thirdStar);
-        });
-        fourthStar.addEventListener('mouseover', function() {
-            mouseover(firstStar);
-            mouseover(secondStar);
-            mouseover(thirdStar);
-            mouseover(fourthStar);
-        });
-        fifthStar.addEventListener('mouseover', function() {
-            mouseover(firstStar);
-            mouseover(secondStar);
-            mouseover(thirdStar);
-            mouseover(fourthStar);
-            mouseover(fifthStar);
-        });
-
-        firstStar.addEventListener('mouseout', mouseout(firstStar));
-        secondStar.addEventListener('mouseout', function() {
-            mouseout(firstStar);
-            mouseout(secondStar);
-        });
-        thirdStar.addEventListener('mouseout', function() {
-            mouseout(firstStar);
-            mouseout(secondStar);
-            mouseout(thirdStar);
-        });
-        fourthStar.addEventListener('mouseout', function() {
-            mouseout(firstStar);
-            mouseout(secondStar);
-            mouseout(thirdStar);
-            mouseout(fourthStar);
-        });
-        fifthStar.addEventListener('mouseout', function() {
-            mouseout(firstStar);
-            mouseout(secondStar);
-            mouseout(thirdStar);
-            mouseout(fourthStar);
-            mouseout(fifthStar);
-        });
     </script>
 </body>
 
