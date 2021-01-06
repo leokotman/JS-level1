@@ -1,15 +1,4 @@
 "use strict";
-/* 
-Разметка товара:
-
-<div class="product">
-    <div>${здесь_название_товара}</div>
-    <img src="${здесь путь до картинки}" alt="">
-    <div>${здесь_цена}</div>
-    <a href="https://example.com/producs/${здесь_id_товара}">Подробнее</a>
-</div>
-*/
-
 const products = {
     phones: [
         {
@@ -75,17 +64,29 @@ const products = {
     ],
 };
 
+/*Разбирался несколько часов с задачей,
+так и не удалось понять, что у меня не так. Просто копировать ваше решение не хочу. Провозился сам, потом открыл решение - у вас всё выглядит проще, но я так и не понял, почему в решении работает всё, а у меня нет. Лазил в отладчике - все равно непонятно. Где я не туда пошел, где нарушена логика?
+Почувствовал себя тупым, но сдаваться не хочу, поэтому и прошу объяснить, в чем разница между нашими решениями.
+*/
+
+const btns = document.querySelectorAll('button');
+let productsView = document.querySelector('.products');
+
+btns.forEach(btn => {
+    btn.addEventListener('click', clickHandler);
+});
 
 /**
  * Эта функция должна вызываться при клике по кнопкам.
  * @param {MouseEvent} event
  */
 function clickHandler(event) {
-    //вам нужно очищать содержимое .products
-    
+    //очистить содержимое .products
+    productsView.innerHTML = '';
     //в showCategory надо передать строку с типом категории, тип берите
     //из атрибута data-type у кнопки, по которой кликнули.
-    
+    const category = this.getAttribute('data-type');
+    showCategory(category);
 }
 
 /**
@@ -96,8 +97,13 @@ function clickHandler(event) {
  * по которой кликнули.
  */
 function showCategory(category) {
-    
+    for (const product in products) {
+        if (product == category) {
+            getProductMarkup(product);
+        }
+    }
 }
+
 
 /**
  * @param {Object} product объект из массива phones, tablets или tv.
@@ -105,9 +111,26 @@ function showCategory(category) {
  * @param {string} product.name название продукта
  * @param {string} product.price цена продукта
  * @param {string} product.imageUrl путь до картинки товара
- * @returns {string} html-разметка для товара по аналогии из комментария
- * в верху этого файла.
+ * @returns {string} html-разметка для товара
  */
 function getProductMarkup(product) {
-
+    let insertedMarkup = `<div class="product">
+        <div>${product.name}</div>
+        <img src="${product.imageUrl}" alt="">
+        <div> ${product.price}</div>
+        <a href="https://example.com/producs/${product.id}">Подробнее</a>
+        </div >`;
+    productsView += productsView.insertAdjacentHTML('afterbegin', insertedMarkup);
+    return productsView;
 }
+/*
+Разметка товара:
+
+<div class="product">
+    <div>${здесь_название_товара}</div>
+    <img src="${здесь путь до картинки
+} " alt="">
+    < div > ${ здесь_цена }</div >
+        <a href="https://example.com/producs/${здесь_id_товара}">Подробнее</a>
+</div >
+*/

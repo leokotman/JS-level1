@@ -26,7 +26,19 @@
     -->
 
     <script>
-        
+        "use strict";
+
+        const btn = document.querySelector('button');
+        let msg = document.querySelector(".message");
+        let msgHeight = msg.clientHeight;
+        const msgAudio = new Audio('notification.mp3');
+
+        btn.addEventListener('click', function click(event) {
+            msgAudio.play();
+            //заменяю стиль по позиции - снизу на высоту сообщения
+            msg.style.top = `calc(100vh - ${msgHeight}px)`;
+
+        });
     </script>
 </body>
 
