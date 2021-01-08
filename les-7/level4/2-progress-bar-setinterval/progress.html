@@ -9,7 +9,10 @@
 </head>
 
 <body>
-    <div></div>
+    <div>
+        <div class="progress-bar"></div>
+    </div>
+    <button>Click to load</button>
 
     <!-- 
     Задание.
@@ -17,14 +20,35 @@
     -->
 
     <script>
-        let div = document.querySelector('div');
+        let bar = document.querySelector('.progress-bar');
+        let btn = document.querySelector('button');
 
-        /**
-         * @param {number} percent величина процента от 0 до 100.
-         */
-        function changeProgress(percent) {
-            div.style.background = `linear-gradient(90deg, rgba(38,255,162,1) ${percent}%, rgba(255,255,255,1) ${percent}%)`;
+        //я сделал по-другому, через прибавление ширины блока,
+        /* почему-то когда я написал следующие строки вместо своего кода:
+
+        for (let i = 0; i <= 100; i++) {
+            setTimeout(changeProgress(i), 1000);
         }
+
+        у меня ничего не работало - сразу был зеленый блок,
+        поэтому я сделал другое решение, более объемное получилось
+        */
+        function changeProgress() {
+            let barWidth = 1;
+            let progress = setInterval(frame, 50);
+
+            function frame() {
+                if (barWidth >= 100) {
+                    clearInterval(progress);
+                } else {
+                    barWidth++;
+                    bar.style.width = barWidth + '%';
+                    bar.style.background = 'green';
+                }
+            }
+        }
+
+        btn.addEventListener('click', changeProgress);
 
         /* 
         Вам нужно в цикле for создать отложенные вызовы с помощью setTimeout. Т.е. в цикле должны
@@ -35,8 +59,6 @@
         можете также добавить какой-нибудь коэффициент, чтобы подобрать желаемую скорость
         заполнения прогресс-бара.
         */
-        
-
     </script>
 </body>
 

@@ -1,0 +1,11 @@
+div {
+    border: 1px solid black;
+    height: 40px;
+    width: 300px;
+    box-sizing: border-box;
+}
+.progress-bar {
+    width: 1%;
+    height: 100%;
+    box-sizing: border-box;
+}
