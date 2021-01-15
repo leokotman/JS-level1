@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div>
+        <div class="progress-bar"></div>
+    </div>
+    <button>Click to load</button>
+
+    <!-- 
+    Задание.
+    Нужно имитировать заполнение прогресс-бара в div.
+    -->
+
+    <script>
+        let bar = document.querySelector('.progress-bar');
+        let btn = document.querySelector('button');
+
+        //я сделал по-другому, через прибавление ширины блока,
+        /* почему-то когда я написал следующие строки вместо своего кода:
+
+        for (let i = 0; i <= 100; i++) {
+            setTimeout(changeProgress(i), 1000);
+        }
+
+        у меня ничего не работало - сразу был зеленый блок,
+        поэтому я сделал другое решение, более объемное получилось
+        */
+        function changeProgress() {
+            let barWidth = 1;
+            let progress = setInterval(frame, 50);
+
+            function frame() {
+                if (barWidth >= 100) {
+                    clearInterval(progress);
+                } else {
+                    barWidth++;
+                    bar.style.width = barWidth + '%';
+                    bar.style.background = 'green';
+                }
+            }
+        }
+
+        btn.addEventListener('click', changeProgress);
+
+        /* 
+        Вам нужно в цикле for создать отложенные вызовы с помощью setTimeout. Т.е. в цикле должны
+        быть вызовы функции setTimeout.
+        1. В условии цикла должно быть i <= 100, т.к. именно значение счетчика будем
+        передавать в changeProgress, а там процент не может превышать 100.
+        2. В setTimeout вторым параметром надо передавать задержку, используйте счетчик цикла,
+        можете также добавить какой-нибудь коэффициент, чтобы подобрать желаемую скорость
+        заполнения прогресс-бара.
+        */
+    </script>
+</body>
+
+</html>
