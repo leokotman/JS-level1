@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        'use strict';
+
+        let post = {
+            text: 'hello world',
+            showText: () => {
+                console.log(this.text);
+            }
+        };
+        post.showText();
+
+        // const product = {
+        //     id: 23,
+        //     getId: function() {
+        //         alert(this.id);
+        //     },
+        // };
+        // let newFn = product.getId.bind(product);
+        // setTimeout(newFn, 1000);
+
+        // function one() {
+        //     console.log(this);
+        // }
+        // one();
+
+        // let myFn = () => {
+        //     console.log(this);
+        // };
+        // myFn.call(document);
+    </script>
+
+</body>
+
+</html>
